@@ -194,3 +194,37 @@ public:
     }
 };
 
+q8.Given an integer array nums, return the third distinct maximum number in this array. If the third maximum does not exist, return the maximum number.
+
+ sol-
+ class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+ priority_queue<int> pq;
+  unordered_set<int> intSet;
+ 
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        
+        if (intSet.find(nums[i]) == intSet.end())
+            intSet.insert(nums[i]);
+    }
+       
+              for(auto element : intSet)
+            pq.push(element);
+                  
+            if(pq.size() >= 3){
+                pq.pop();
+                pq.pop();
+                return pq.top();
+            }
+                  else{
+                     return pq.top(); 
+                  }
+        
+    }
+        
+    
+};
+
